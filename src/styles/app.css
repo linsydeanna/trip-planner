@@ -1,3 +1,8 @@
+@import 'components/card.css';
+@import 'components/logo.css';
+@import 'components/tabs.css';
+@import 'components/signinform.css';
+
 .app {
   font-family: 'Arimo', sans-serif;
   margin: 50px;
@@ -5,4 +10,80 @@
 
 .create-account-form {
   margin-bottom: 50px;
+}
+
+.sign-in-sign-up {
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+@media all and (min-width: 480px) {
+  .sign-in-sign-up {
+    width: 480px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .sign-in-sign-up .card {
+    box-shadow: none;
+  }
+}
+
+.sign-in-sign-up .logo {
+  padding: 1.5rem;
+}
+
+.sign-in-sign-up .tab-headers {
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.sign-in-sign-up .form-control {
+  box-shadow: none;
+  /*border-color: #EEE;*/
+}
+
+.sign-in-sign-up .form-control:focus {
+  /*border-color: #F4A261;*/
+}
+
+.btn {
+  border-radius: 25px;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn-primary {
+  color: white;
+  background-color: #F4A261;
+  border-color: #F4A261;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-priamry.focus,
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #F4A261;
+  border-color: #F4A261;
+}
+
+.btn-primary.active.focus,
+.btn-primary.active:focus,
+.btn-primary:active:focus,
+.btn-primary:active.focus,
+.btn-primary.active.hover,
+.btn-primary.active:hover,
+.btn-primary:active:hover,
+.btn-primary:active.hover {
+  background-color: #F4A261;
+  border-color: #F4A261;
+  outline: none;
 }

@@ -4,11 +4,15 @@ import {
   Route
 } from 'react-router-dom';
 import Home from "../pages/Home";
+import Test from "../pages/Test";
 
 const Routes = () => {
   return (
     <Router>
-      <Route path="/home" component={Home} />
+      <div>
+        <Route path="/" component={Test} />
+        <Route path="/home" component={Home} />
+      </div>
     </Router>
   )
 };

@@ -1,0 +1,12 @@
+.sign-in-form label,
+.sign-up-form label {
+  margin-bottom: 3px;
+  margin-top: 2px;
+  font-weight: normal;
+}
+
+.sign-in-form .btn[type="submit"],
+.sign-up-form .btn[type="submit"] {
+  display: block;
+  margin: 2rem auto 1rem;
+}
