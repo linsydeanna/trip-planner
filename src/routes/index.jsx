@@ -3,8 +3,11 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
+
 import Home from "../pages/Home";
 import Test from "../pages/Test";
+
+import '../styles/app.scss';
 
 const Routes = () => {
   return (

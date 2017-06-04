@@ -1,19 +1,21 @@
 import React from 'react';
-import Input from "./ui/Input";
-// import { Button } from "react-bootstrap";
 import { Field, reduxForm } from 'redux-form';
+
+import Form from './ui/Form';
+import Input from './ui/Input';
+import Button from './ui/Button';
+
+import '../styles/components/_SignInForm.scss';
 
 const SignInForm = ({ handleSubmit, onSubmit }) => {
   return (
-    <div className="sign-in-form">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="username">Username</label>
-        <Field id="username" name="username" component={Input} type="text" />
-        <label htmlFor="password">Password</label>
-        <Field id="password" name="password" component={Input} type="text" />
-        <button className="btn btn-primary" type="submit">Sign In</button>
-      </form>
-    </div>
+    <Form className="sign-in-form" onSubmit={handleSubmit(onSubmit)}>
+      <label htmlFor="username">Username</label>
+      <Field id="username" name="username" component={Input} type="text" />
+      <label htmlFor="password">Password</label>
+      <Field id="password" name="password" component={Input} type="text" />
+      <Button btnStyle="primary" type="submit">Sign In</Button>
+    </Form>
   );
 };
 

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../styles/components/ui/_Tabs.scss';
+
 class Tabs extends React.Component {
 
   constructor(props) {

@@ -1,13 +1,18 @@
 import React from 'react';
-import Logo from '../components/Logo';
-import { Tabs, Tab } from '../components/Tabs';
+
 import SignInForm from '../components/SignInForm';
 import SignUpForm from '../components/SignUpForm';
+import Logo from '../components/ui/Logo';
+import { Tabs, Tab } from '../components/ui/Tabs';
+import Card from '../components/ui/Card';
+
+import '../styles/components/_SignInSignUp.scss';
 
 class SignInSignUp extends React.Component {
   constructor(props) {
     super(props);
     this.handleSignIn = this.handleSignIn.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
   handleSignIn(data) {
@@ -20,19 +25,17 @@ class SignInSignUp extends React.Component {
 
   render() {
     return (
-      <div className="sign-in-sign-up">
-        <div className="card">
-          <Logo />
-          <Tabs selectedIndex="0">
-            <Tab title="Sign In">
-              <SignInForm onSubmit={this.handleSignIn} />
-            </Tab>
-            <Tab title="Sign Up">
-              <SignUpForm onSubmit={this.handleSignUp} />
-            </Tab>
-          </Tabs>
-        </div>
-      </div>
+      <Card className="sign-in-sign-up">
+        <Logo />
+        <Tabs selectedIndex="0">
+          <Tab title="Sign In">
+            <SignInForm onSubmit={this.handleSignIn} />
+          </Tab>
+          <Tab title="Sign Up">
+            <SignUpForm onSubmit={this.handleSignUp} />
+          </Tab>
+        </Tabs>
+      </Card>
     );
   }
 }

@@ -1,11 +1,15 @@
 import React from 'react';
-import Input from "./ui/Input";
-// import { Button } from "react-bootstrap";
 import { Field, reduxForm } from 'redux-form';
+
+import Form from './ui/Form';
+import Button from './ui/Button';
+import Input from './ui/Input';
+
+import '../styles/components/_SignUpForm.scss';
 
 const SignUpForm = ({ handleSubmit, onSubmit }) => {
   return (
-    <div className="sign-up-form">
+    <Form className="sign-up-form">
       <form onSubmit={handleSubmit(onSubmit)}>
         <label for="email">Email</label>
         <Field id="email" name="email" component={Input} type="text" />
@@ -15,9 +19,9 @@ const SignUpForm = ({ handleSubmit, onSubmit }) => {
         <Field id="password" name="password" component={Input} type="text" />
         <label for="confirmPassword">Confirm Password</label>
         <Field id="confirmPassword" name="confirmPassword" component={Input} type="text" />
-        <button className="btn btn-primary" type="submit">Sign Up</button>
+        <Button btnStyle="primary" type="submit">Sign Up</Button>
       </form>
-    </div>
+    </Form>
   )
 };
 
