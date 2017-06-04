@@ -9,18 +9,16 @@ import '../styles/components/_SignUpForm.scss';
 
 const SignUpForm = ({ handleSubmit, onSubmit }) => {
   return (
-    <Form className="sign-up-form">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label for="email">Email</label>
-        <Field id="email" name="email" component={Input} type="text" />
-        <label for="username">Username</label>
-        <Field id="username" name="username" component={Input} type="text" />
-        <label for="password">Password</label>
-        <Field id="password" name="password" component={Input} type="text" />
-        <label for="confirmPassword">Confirm Password</label>
-        <Field id="confirmPassword" name="confirmPassword" component={Input} type="text" />
-        <Button btnStyle="primary" type="submit">Sign Up</Button>
-      </form>
+    <Form className="sign-up-form" onSubmit={handleSubmit(onSubmit)}>
+      <label for="email">Email</label>
+      <Field id="email" name="email" component={Input} type="text" />
+      <label for="username">Username</label>
+      <Field id="username" name="username" component={Input} type="text" />
+      <label for="password">Password</label>
+      <Field id="password" name="password" component={Input} type="text" />
+      <label for="confirmPassword">Confirm Password</label>
+      <Field id="confirmPassword" name="confirmPassword" component={Input} type="text" />
+      <Button btnStyle="primary" type="submit">Sign Up</Button>
     </Form>
   )
 };
