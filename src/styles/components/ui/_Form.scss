@@ -16,4 +16,16 @@
     margin: 2rem auto 1rem;
   }
 
+  .form-control {
+    box-shadow: none;
+    border-color: $input-border;
+    color: $input-color;
+    transition: background-color $default-anim-duration ease;
+
+    &:focus {
+      background-color: $input-background-focus;
+    }
+
+  }
+
 }

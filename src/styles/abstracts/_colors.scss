@@ -13,6 +13,7 @@ $old-silver: #858585;
 $pure-white: #FFF;
 $vanta-black: #000;
 
+$main: $japanese-indigo;
 $primary-accent: $sandy-brown;
 
 $text-dark: $arsenic;
@@ -25,3 +26,8 @@ $btn-fg-primary: $pure-white;
 
 $tab-headers-bottom-border: $gainsboro;
 $tab-header-active-border: $primary-accent;
+
+$input-border: $gainsboro;
+$input-color: $main;
+$input-background-focus: rgba(255, 255, 220, 0.5);
+$input-border-focus: $main;

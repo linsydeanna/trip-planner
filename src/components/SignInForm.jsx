@@ -13,7 +13,7 @@ const SignInForm = ({ handleSubmit, onSubmit }) => {
       <label htmlFor="username">Username</label>
       <Field id="username" name="username" component={Input} type="text" />
       <label htmlFor="password">Password</label>
-      <Field id="password" name="password" component={Input} type="text" />
+      <Field id="password" name="password" component={Input} type="password" />
       <Button btnStyle="primary" type="submit">Sign In</Button>
     </Form>
   );
