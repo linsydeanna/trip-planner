@@ -1,0 +1,20 @@
+.input {
+
+  &.has-error .form-control:focus,
+  &.has-success .form-control:focus {
+    box-shadow: none;
+  }
+
+  &.has-error {
+
+    .error {
+      display: block;
+      padding-top: 0.5rem;
+      color: #A94442;
+      font-size: 85%;
+      text-align: right;
+    }
+
+  }
+
+}

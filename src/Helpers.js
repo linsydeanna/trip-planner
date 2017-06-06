@@ -3,6 +3,7 @@
  * redundant.
  * @param {Object} dirtyProps - React properties or any object.
  * @param {string[]} propsToClean - List of case-sensitive keys to filter out.
+ * @return {Object}
  */
 export const sanitizeProps = (dirtyProps, propsToClean = []) => {
   let sanitizedProps = {};
@@ -12,4 +13,12 @@ export const sanitizeProps = (dirtyProps, propsToClean = []) => {
     }
   }
   return sanitizedProps;
+};
+
+/**
+ * Checks whether or not a string is empty, null, or undefined.
+ * @param {String}
+ */
+export const isEmpty = (value = '') => {
+  return !value.trim();
 };
