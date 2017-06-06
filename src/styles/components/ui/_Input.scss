@@ -1,8 +1,13 @@
 .input {
 
-  &.has-error .form-control:focus,
-  &.has-success .form-control:focus {
-    box-shadow: none;
+  &.has-error .form-control,
+  &.has-success .form-control {
+    border-color: $input-border;
+
+    &:focus {
+      box-shadow: none;
+      border-color: $input-border;
+    }
   }
 
   &.has-error {
