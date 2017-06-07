@@ -12,7 +12,7 @@ export function email(value) {
   }
 }
 
-export function minLength(min) {
+export function shortest(min) {
   return value => {
     if (!isEmpty(value) && value.length < min) {
       return `Must be at least ${min} characters`;
@@ -20,10 +20,18 @@ export function minLength(min) {
   };
 }
 
-export function maxLength(max) {
+export function longest(max) {
   return value => {
     if (!isEmpty(value) && value.length > max) {
       return `Must be no more than ${max} characters`;
     }
   };
+}
+
+export function match(field) {
+  return (value, data) => {
+    if (data && value !== data[field]) {
+      return 'Does not match';
+    }
+  }
 }

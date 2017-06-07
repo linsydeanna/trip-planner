@@ -4,12 +4,14 @@ import { Field, reduxForm } from 'redux-form';
 import Form from './ui/Form';
 import Button from './ui/Button';
 import Input from './ui/Input';
-import { required, email, minLength, maxLength } from '../Validations';
+import { required, email, shortest, longest, match } from '../Validations';
 
 import '../styles/components/_SignUpForm.scss';
 
-const usernameLength = minLength(3) || maxLength(10);
-const passwordLength = minLength(4) || maxLength(10);
+const emailRules = [required, email];
+const usernameRules = [required, shortest(3), longest(10)];
+const passwordRules = [required, shortest(4), longest(10)];
+const confirmPasswordRules = [match('password')];
 
 const SignUpForm = props => {
   const { handleSubmit } = props;
@@ -21,7 +23,7 @@ const SignUpForm = props => {
         component={Input}
         type="email"
         label="Email"
-        validate={[required, email]}
+        validate={emailRules}
         />
       <Field
         id="username"
@@ -29,7 +31,7 @@ const SignUpForm = props => {
         component={Input}
         type="text"
         label="Username"
-        validate={[required, usernameLength]}
+        validate={usernameRules}
       />
       <Field
         id="password"
@@ -37,7 +39,7 @@ const SignUpForm = props => {
         component={Input}
         type="password"
         label="Password"
-        validate={[required, passwordLength]}
+        validate={passwordRules}
       />
       <Field
         id="confirm-password"
@@ -45,7 +47,7 @@ const SignUpForm = props => {
         component={Input}
         type="password"
         label="Confirm Password"
-        validate={[required, passwordLength]}
+        validate={confirmPasswordRules}
       />
       <Button btnStyle="primary" type="submit">Sign Up</Button>
     </Form>
