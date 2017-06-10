@@ -58,10 +58,6 @@ class Tabs extends React.Component {
     this.switchTab(e.target.dataset.index);
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
     return (
       <div className="tabs">
