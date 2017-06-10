@@ -5,9 +5,12 @@ import { withRouter } from 'react-router-dom';
 import SignInSignUp from '../components/SignInSignUp';
 
 
-const Test = props => (
-  <SignInSignUp />
-);
+const Test = props => {
+  console.log('PROPS', props);
+  return (
+    <SignInSignUp />
+  )
+};
 
 const mapStateToProps = state => ({
   // user: state.user,
