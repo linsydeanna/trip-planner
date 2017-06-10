@@ -9,11 +9,13 @@ import { withRouter } from 'react-router-dom';
 import { addCard, addUser } from '../actions/actions';
 import store from '../store/store';
 
+//the name of this function can change
 const switchCard = ({ cardType, name }) => {
   store.dispatch(addCard(cardType, name));
 };
 
 const createAccount = ({ email, username, password, confirmPassword }) => {
+  //needs to be changed
   axios({
     method: 'post',
     url: 'http://localhost:8000/trip-planner/users',
