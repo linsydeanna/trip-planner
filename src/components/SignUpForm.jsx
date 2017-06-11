@@ -13,8 +13,7 @@ const usernameRules = [required, shortest(3), longest(10)];
 const passwordRules = [required, shortest(4), longest(10)];
 const confirmPasswordRules = [match('password')];
 
-const SignUpForm = props => {
-  const { handleSubmit } = props;
+const SignUpForm = ({ handleSubmit }) => {
   return (
     <Form className="sign-up-form" onSubmit={handleSubmit}>
       <Field

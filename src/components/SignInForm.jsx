@@ -8,8 +8,7 @@ import { required } from '../Validations';
 
 import '../styles/components/_SignInForm.scss';
 
-const SignInForm = props => {
-  const { handleSubmit } = props;
+const SignInForm = ({ handleSubmit }) => {
   return (
     <Form className="sign-in-form" onSubmit={handleSubmit}>
       <Field
