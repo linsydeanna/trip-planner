@@ -8,12 +8,11 @@ class Tabs extends React.Component {
     super(props);
     this.MIN = 0;
     this.state = {
-      selectedIndex: parseInt(this.props.selectedIndex, 10) || 0,
+      selectedIndex: this.props.selectedIndex || 0,
       headerTitles: this.getHeaderTitles(this.props.children),
       panels: this.getPanels(this.props.children)
     }
     this.switchTab = this.switchTab.bind(this);
-    this.handleHeaderClick = this.handleHeaderClick.bind(this);
   }
 
   getHeaderTitles(children) {
@@ -31,7 +30,7 @@ class Tabs extends React.Component {
           className={"tab-header" + (index === this.state.selectedIndex ? " active" : "")}
           data-index={index}
           key={index}
-          onClick={this.handleHeaderClick}
+          onClick={(e) => this.handleHeaderClick(e)}
         >
           {header}
         </li>

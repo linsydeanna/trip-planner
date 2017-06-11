@@ -8,10 +8,10 @@ import Card from '../components/ui/Card';
 
 import '../styles/components/_SignInSignUp.scss';
 
-const handleSignIn = (data) => {
+const handleSignIn = data => {
   console.log('SIGN IN', data);
 }
-const handleSignUp = (data) => {
+const handleSignUp = data => {
   console.log('SIGN UP', data);
 }
 
@@ -19,7 +19,7 @@ const SignInSignUp = () => {
   return (
     <Card className="sign-in-sign-up">
       <Logo />
-      <Tabs selectedIndex="0">
+      <Tabs selectedIndex={0}>
         <Tab title="Sign In">
           <SignInForm onSubmit={data => handleSignIn(data)} />
         </Tab>
@@ -28,6 +28,7 @@ const SignInSignUp = () => {
         </Tab>
       </Tabs>
     </Card>
-  )};
+  )
+};
 
 export default SignInSignUp;
