@@ -39,7 +39,9 @@ class Tabs extends React.Component {
   }
 
   renderPanels(panels) {
+    console.log('RENDER PANELS');
     return panels.map((panel, index) => {
+      console.log('PANEL', panel);
       return index === this.state.selectedIndex ?
         (<li className="tab-panel" key={index}>{panel}</li>) :
         undefined;
@@ -58,6 +60,7 @@ class Tabs extends React.Component {
   }
 
   render() {
+    console.log('RENDER TABS');
     return (
       <div className="tabs">
         <ul className="tab-headers">

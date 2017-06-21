@@ -15,9 +15,9 @@ const defaultState = {
   user: {}
 };
 
-const store = createStore(rootReducer, defaultState, applyMiddleware(logger));
+// const store = createStore(rootReducer, defaultState, applyMiddleware(logger));
 // NOTE: Use the one below instead if you don't want the redux logs in the
 // browser console.
-// const store = createStore(rootReducer, defaultState);
+const store = createStore(rootReducer, defaultState);
 
 export default store;

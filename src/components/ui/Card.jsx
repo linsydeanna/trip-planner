@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../../styles/components/ui/_Card.scss';
 
-export default ({ hoverable, className, children, ...rest}) => {
+const Card = ({ hoverable, className, children, ...rest}) => {
   let classes = [
     'card',
     hoverable ? 'hoverable' : '',
@@ -12,3 +12,5 @@ export default ({ hoverable, className, children, ...rest}) => {
     <div className={classes} {...rest}>{children}</div>
   );
 };
+
+export default Card;

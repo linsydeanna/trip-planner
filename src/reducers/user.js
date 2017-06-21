@@ -1,22 +1,22 @@
-export default (state = {}, something) => {
-  switch (something.type) {
-    // case 'ADD_USER':
-    //   return {
-    //     ...state,
-    //     email,
-    //     username,
-    //     password,
-    //     confirmPassword
-    //   };
+export default (state = {}, { type, data }) => {
+  switch (type) {
     case 'LOG_USER_IN':
-      console.log ('LOG_USER_IN', state, something);
-      return state;
-      // return {
-      //   ...state,
-      //   username,
-      //   id: userId,
-      //   email
-      // };
+      return {
+        ...state,
+        username: data.username,
+        id: data.id,
+        email: data.email,
+        isAuthenticated: true,
+        loggedInAt: new Date()
+      };
+    case 'LOG_USER_OUT':
+      return {
+        ...state,
+        username: null,
+        id: null,
+        email: null,
+        isAuthenticated: false
+      };
     default:
       return state;
   }

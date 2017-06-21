@@ -8,12 +8,13 @@ export const addUser = (email, username, password, confirmPassword) => {
   }
 };
 
-export const logUserIn = (username, id, email) => {
+export const logUserIn = (username, id, email, token) => {
   return {
     type: 'LOG_USER_IN',
     username,
     id,
-    email
+    email,
+    token
   };
 };
 

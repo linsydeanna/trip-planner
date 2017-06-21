@@ -5,7 +5,7 @@ const getValidationState = (touched, error, warning) => {
   return !touched ? null : warning ? 'warning' : error ? 'error' : 'success';
 };
 
-export default ({id, input, label, type, placeholder, meta: { touched, error, warning } }) => {
+const Input = ({id, input, label, type, placeholder, meta: { touched, error, warning } }) => {
   return (
     <FormGroup
       bsClass="form-group input"
@@ -27,3 +27,5 @@ export default ({id, input, label, type, placeholder, meta: { touched, error, wa
     </FormGroup>
   )
 };
+
+export default Input;

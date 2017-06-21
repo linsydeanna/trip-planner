@@ -1,0 +1,15 @@
+.status-callout {
+  display: block;
+  padding: 1rem;
+
+  .default {
+    color: black;
+    background-color: #AAA;
+  }
+
+  .error {
+    color: red;
+    background-color: pink;
+  }
+
+}
