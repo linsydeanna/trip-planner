@@ -1,17 +1,17 @@
 .tabs {
 
-  .tab-headers,
+  .tab-list,
   .tab-panels {
     list-style: none;
   }
 
-  .tab-headers {
+  .tab-list {
     display: flex;
     flex-direction: row;
     border-bottom: 1px solid $tab-headers-bottom-border;
   }
 
-  .tab-header {
+  .tab-list-item {
     position: relative;
     padding-top: 0.5rem;
     padding-bottom: 1.5rem;
@@ -51,9 +51,10 @@
 
   .tab-panel {
     padding: 1.5rem;
+    display: none;
 
-    .hidden {
-      display: hidden !important;
+    &.active {
+      display: block;
     }
 
   }

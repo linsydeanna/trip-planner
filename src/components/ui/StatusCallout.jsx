@@ -5,7 +5,7 @@ const StatusCallout = ({ success, error, warning, message }) => {
   let className = `status-callout ${statusClass}`;
   return (
     <div className={className}>
-      <p>{message}</p>
+      <p>{JSON.stringify(message)}</p>
     </div>
   );
 };
