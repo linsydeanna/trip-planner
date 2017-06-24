@@ -1,0 +1,58 @@
+.notification {
+  margin: 0.5rem 0.5rem 0.5rem auto;
+  width: calc(320px - 1rem);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  &.default {
+    background-color: $notif-bg-default;
+    color: $notif-fg-default;
+  }
+
+  &.error {
+    background-color: $notif-bg-error;
+    color: $notif-fg-error;
+  }
+
+  .message {
+    flex: 1 1 auto;
+    padding: 1rem;
+  }
+
+  .close-icon {
+    flex: 0 0 24px;
+    color: $pure-white;
+    background-color: $notif-fg-error;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &-enter {
+    opacity: 0.1;
+    right: -300px;
+
+    &.notification-enter-active {
+      opacity: 1;
+      right: 0px;
+      transition: all 500ms ease-in;
+    }
+
+  }
+
+  &-leave {
+    opacity: 1;
+    right: 0px;
+
+    &.notification-leave-active {
+      opacity: 0.1;
+      right: -300px;
+      transition: all 500ms ease-in;
+    }
+
+  }
+
+}

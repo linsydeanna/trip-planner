@@ -1,3 +1,5 @@
+import store from '../store/store';
+
 export const addUser = (email, username, password, confirmPassword) => {
   return {
     type: 'ADD_USER',
@@ -24,4 +26,25 @@ export const addCard = (cardType, name) => {
     cardType,
     name
   }
+};
+
+export const removeNotification = ({key}) => {
+  return {
+    type: 'REMOVE_NOTIFICATION',
+    key
+  };
+};
+
+export const addNotification = ({ key, severity, message, ttl = 5000 }) => {
+  let uniqueKey = `${key}-${Date.now()}`;
+  setTimeout(() => {
+    store.dispatch(removeNotification({ key: uniqueKey }));
+  }, ttl);
+  return {
+    type: 'ADD_NOTIFICATION',
+    key: uniqueKey,
+    severity,
+    message,
+    ttl
+  };
 };

@@ -3,6 +3,8 @@
 
 @import 'base/reset';
 
+@import 'pages/Notifications';
+
 @import 'components/SignInSignUp';
 @import 'components/SignInForm';
 @import 'components/SignUpForm';
@@ -13,7 +15,8 @@
 @import 'components/ui/Button';
 @import 'components/ui/Logo';
 @import 'components/ui/Input';
-@import 'components/ui/StatusCallout';
+@import 'components/ui/FormStatus';
+@import 'components/ui/Notification';
 
 html {
   min-height: 100%;

@@ -1,13 +1,15 @@
-.status-callout {
+.form-status {
   display: block;
   padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 3px;
 
-  .default {
+  &.default {
     color: black;
     background-color: #AAA;
   }
 
-  .error {
+  &.error {
     color: red;
     background-color: pink;
   }
