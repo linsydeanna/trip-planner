@@ -10,7 +10,7 @@ export const addUser = (email, username, password, confirmPassword) => {
   }
 };
 
-export const logUserIn = (username, id, email, token) => {
+export const logUserIn = ({ username, id, email, token }) => {
   return {
     type: 'LOG_USER_IN',
     username,
@@ -35,7 +35,7 @@ export const removeNotification = ({key}) => {
   };
 };
 
-export const addNotification = ({ key, severity, message, ttl = 5000 }) => {
+export const addNotification = ({ key, severity, message, ttl = 7500 }) => {
   let uniqueKey = `${key}-${Date.now()}`;
   setTimeout(() => {
     store.dispatch(removeNotification({ key: uniqueKey }));

@@ -20,67 +20,9 @@ class SignInSignUp extends React.Component {
         message: ''
       }
     };
-  }
-
-  handleSignIn(data) {
-    fetch('//localhost:8000/api/login', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username: data.username,
-        password: data.password
-      })
-    }).then(resp => {
-      console.log(resp, resp.body.getReader().read());
-      if (!resp.ok) {
-        this.setPostStatus(resp);
-        return;
-      }
-      this.setPostStatus(resp, () => {
-        this.logUserIn(data.username, resp.body.id, data.email, resp.body.token);
-      });
-    }).catch(error => {
-      console.error(error);
-      store.dispatch(addNotification({
-        key: 'sign-in-error',
-        severity: 'error',
-        message: 'An unexpected error has occured. If you have connection, it is most likely a script error.',
-        ttl: 7500
-      }));
-    });
-  }
-
-  handleSignUp(data) {
-    fetch('//localhost:8000/api/users', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: data.email,
-        username: data.username,
-        password: data.password,
-        confirmPassword: data.confirmPassword
-      })
-    }).then(resp => {
-      if (!resp.ok) {
-        this.setPostStatus(false, resp.statusText);
-        return;
-      }
-      this.setPostStatus(true, 'success');
-      this.logUserIn(data.username, resp.body.id, data.email, resp.body.token);
-    }).catch(error => {
-      this.setPostStatus(false, error);
-      return;
-    });
-  }
-
-  logUserIn(username, id, email, token) {
-    store.dispatch(logUserIn({ username, id, email, token }));
+    this.handleTabSelect = this.handleTabSelect.bind(this);
+    this.handleSignIn = this.handleSignIn.bind(this);
+    this.handleSignUp = this.handleSignUp.bind(this);
   }
 
   setPostStatus({ ok, status, statusText }, cb) {
@@ -88,19 +30,93 @@ class SignInSignUp extends React.Component {
     this.setState({ postStatus: { ok, message }}, cb);
   }
 
+  resetPostStatus(cb) {
+    this.setPostStatus({ ok: true, status: null, statusText: ''}, cb);
+  }
+
+  handleTabSelect(index, lastIndex, e) {
+    this.resetPostStatus();
+  }
+
+  handleSignIn(data) {
+    let { username, password } = data;
+    this.resetPostStatus();
+    this.post(false, { username, password });
+  }
+
+  handleSignUp(data) {
+    let { email, username, password, confirmPassword } = data;
+    this.resetPostStatus();
+    this.post(true, { email, username, password, confirmPassword });
+  }
+
+  handleError(err, message) {
+    console.error(err);
+    store.dispatch(addNotification({
+      key: 'fetch-error',
+      severity: 'error',
+      message: message || err.message
+    }));
+  }
+
+  post(isNewAccount, payload) {
+    let { username } = payload;
+    let base = process.env.REACT_APP_API;
+    let endpoint = isNewAccount ? '/users' : '/login';
+    let config = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    };
+
+    fetch(base + endpoint, config).then(resp => {
+      this.setPostStatus(resp);
+      return resp.status === 200 ?
+        resp.json().catch(err => {
+          this.handleError(err, 'Unable to parse server response');
+        }) :
+        undefined;
+    })
+    .then(parsedData => {
+      if (!parsedData) { return; }
+
+      let { id, email, token } = parsedData;
+      if (!id || !email || !token) {
+        let synthResp = {
+          ok: false,
+          status: 200,
+          statusText: 'Authentication is successful, but server response is insufficient.'
+        };
+        this.setPostStatus(synthResp);
+        return;
+      }
+
+      this.resetPostStatus();
+      store.dispatch(logUserIn({ username, id, email, token }));
+    })
+    .catch(err => {
+      this.handleError(err);
+    });
+  }
+
   render() {
     return (
       <Card className="sign-in-sign-up">
         <Logo />
-        <Tabs>
+        <Tabs onSelect={this.handleTabSelect}>
           <div title="Sign In">
             <SignInForm
-              onSubmit={data => this.handleSignIn(data)}
+              onSubmit={this.handleSignIn}
               postStatus={this.state.postStatus}
             />
           </div>
           <div title="Sign Up">
-            <SignUpForm onSubmit={data => this.handleSignUp(data)} customValidation={this.state.post} />
+            <SignUpForm
+              onSubmit={this.handleSignUp}
+              postStatus={this.state.postStatus} />
           </div>
         </Tabs>
       </Card>

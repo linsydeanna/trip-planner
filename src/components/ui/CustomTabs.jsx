@@ -19,9 +19,12 @@ const renderTabPanels = (children) => {
   ));
 };
 
-const CustomTabs = ({ children, ...rest }) => {
+const CustomTabs = ({ onSelect, children, ...rest }) => {
   return (
-    <Tabs className="tabs">
+    <Tabs
+      className="tabs"
+      onSelect={(index, lastIndex, e) => onSelect(index, lastIndex, e)}
+    >
       <TabList className="tab-list">
         { renderTabs(children) }
       </TabList>

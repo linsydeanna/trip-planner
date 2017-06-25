@@ -1,14 +1,17 @@
-export default (state = {}, { type, data }) => {
-  switch (type) {
+export default (state = {}, action) => {
+  switch (action.type) {
+
     case 'LOG_USER_IN':
+      const { username, id, email } = action;
       return {
         ...state,
-        username: data.username,
-        id: data.id,
-        email: data.email,
+        username,
+        id,
+        email,
         isAuthenticated: true,
         loggedInAt: new Date()
       };
+
     case 'LOG_USER_OUT':
       return {
         ...state,
@@ -17,6 +20,7 @@ export default (state = {}, { type, data }) => {
         email: null,
         isAuthenticated: false
       };
+      
     default:
       return state;
   }
