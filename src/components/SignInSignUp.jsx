@@ -83,8 +83,8 @@ class SignInSignUp extends React.Component {
     .then(parsedData => {
       if (!parsedData) { return; }
 
-      let { id, email, token } = parsedData;
-      if (!id || !email || !token) {
+      let { email, token } = parsedData;
+      if (!email || !token) {
         let synthResp = {
           ok: false,
           status: 200,
@@ -95,7 +95,8 @@ class SignInSignUp extends React.Component {
       }
 
       this.resetPostStatus();
-      store.dispatch(logUserIn({ username, id, email, token }));
+      store.dispatch(logUserIn({ username, email, token }));
+      this.props.redirect('/trips');
     })
     .catch(err => {
       this.handleError(err);

@@ -10,11 +10,10 @@ export const addUser = (email, username, password, confirmPassword) => {
   }
 };
 
-export const logUserIn = ({ username, id, email, token }) => {
+export const logUserIn = ({ username, email, token }) => {
   return {
     type: 'LOG_USER_IN',
     username,
-    id,
     email,
     token
   };

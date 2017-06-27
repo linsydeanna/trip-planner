@@ -2,11 +2,11 @@ export default (state = {}, action) => {
   switch (action.type) {
 
     case 'LOG_USER_IN':
-      const { username, id, email } = action;
+      const { username, token, email } = action;
       return {
         ...state,
         username,
-        id,
+        token,
         email,
         isAuthenticated: true,
         loggedInAt: new Date()
@@ -15,12 +15,13 @@ export default (state = {}, action) => {
     case 'LOG_USER_OUT':
       return {
         ...state,
-        username: null,
-        id: null,
-        email: null,
-        isAuthenticated: false
+        username: '',
+        token: '',
+        email: '',
+        isAuthenticated: false,
+        loggedInAt: null
       };
-      
+
     default:
       return state;
   }

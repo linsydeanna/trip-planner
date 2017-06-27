@@ -1,12 +1,16 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Redirect,
+  Switch
 } from 'react-router-dom';
 
 import PrivateRoute from '../components/PrivateRoute';
+import NoMatch from '../components/NoMatch';
 import Home from '../pages/Home';
-import Test from '../pages/Test';
+import Login from '../pages/Login';
+import Trips from '../pages/Trips';
 import Notifications from '../pages/Notifications';
 
 import '../styles/app.scss';
@@ -16,8 +20,12 @@ const Routes = () => {
     <Router>
       <div>
         <Notifications />
-        <PrivateRoute path="/" component={Home} />
-        <Route path="/login" component={Test} />
+        <Switch>
+          <Redirect exact from="/" to="/trips" />
+          <Route path="/login" component={Login} />
+          <PrivateRoute path="/trips" component={Home} />
+          <Route component={NoMatch} />
+        </Switch>
       </div>
     </Router>
   )
