@@ -1,0 +1,38 @@
+$japanese-indigo: #264653;
+$jungle-green: #2A9D8F;
+$hansa-yellow: #E9C46A;
+$sandy-brown: #F4A261;
+$light-red-ochre: #E76F51;
+
+$isabelline: #F0F0F0;
+$gainsboro: #E7DDDC;
+$pale-silver: #C6BCBA;
+$arsenic: #414141;
+$old-silver: #858585;
+
+$pure-white: #FFF;
+$vanta-black: #000;
+
+$main: $japanese-indigo;
+$primary-accent: $sandy-brown;
+
+$text-dark: $arsenic;
+$text-dark-disabled: $old-silver;
+
+$btn-bg-default: $gainsboro;
+$btn-fg-default: $arsenic;
+$btn-bg-primary: $primary-accent;
+$btn-fg-primary: $pure-white;
+
+$tab-headers-bottom-border: $gainsboro;
+$tab-header-active-border: $primary-accent;
+
+$input-border: $gainsboro;
+$input-color: $main;
+$input-background-focus: rgba(255, 255, 220, 0.5);
+$input-border-focus: $main;
+
+$notif-bg-default: $pure-white;
+$notif-fg-default: $vanta-black;
+$notif-bg-error: pink;
+$notif-fg-error: red;

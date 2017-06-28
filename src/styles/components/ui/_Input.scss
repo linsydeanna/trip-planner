@@ -1,0 +1,25 @@
+.input {
+
+  &.has-error .form-control,
+  &.has-success .form-control {
+    border-color: $input-border;
+
+    &:focus {
+      box-shadow: none;
+      border-color: $input-border;
+    }
+  }
+
+  &.has-error {
+
+    .error {
+      display: block;
+      padding-top: 0.5rem;
+      color: #A94442;
+      font-size: 85%;
+      text-align: right;
+    }
+
+  }
+
+}

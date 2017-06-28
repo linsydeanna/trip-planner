@@ -1,0 +1,27 @@
+.sign-in-sign-up {
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  @media all and (min-width: 480px) {
+    width: 480px;
+  }
+
+  @media all and (max-width: 480px) {
+    &.card {
+      box-shadow: none;
+    }
+  }
+
+  .logo {
+    padding: 1.5rem;
+  }
+
+  .tab-list {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+}

@@ -27,7 +27,7 @@ const createAccount = ({ email, username, password, confirmPassword }) => {
   store.dispatch(addUser(email, username, password, confirmPassword));
 };
 
-const Home = (props) => (
+const Home = props => (
   <div className="app">
     <Cards {...props} />
     <CreateAccountForm onSubmit={data => {createAccount(data)}} />

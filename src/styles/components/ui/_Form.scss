@@ -1,0 +1,31 @@
+.form {
+
+  label {
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+    font-weight: normal;
+
+    &:first-of-type {
+      margin-top: 1rem;
+    }
+
+  }
+
+  .button[type="submit"] {
+    display: block;
+    margin: 2rem auto 1rem;
+  }
+
+  .form-control {
+    box-shadow: none;
+    border-color: $input-border;
+    color: $input-color;
+    transition: background-color $default-anim-duration ease;
+
+    &:focus {
+      background-color: $input-background-focus;
+    }
+
+  }
+
+}

@@ -1,13 +1,27 @@
-export default (state = {}, { type, email, username, password, confirmPassword }) => {
-  switch (type) {
-    case 'ADD_USER':
-    return {
-      ...state,
-        email,
+export default (state = {}, action) => {
+  switch (action.type) {
+
+    case 'LOG_USER_IN':
+      const { username, token, email } = action;
+      return {
+        ...state,
         username,
-        password,
-        confirmPassword
-      }
+        token,
+        email,
+        isAuthenticated: true,
+        loggedInAt: new Date()
+      };
+
+    case 'LOG_USER_OUT':
+      return {
+        ...state,
+        username: '',
+        token: '',
+        email: '',
+        isAuthenticated: false,
+        loggedInAt: null
+      };
+
     default:
       return state;
   }
