@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../styles/components/ui/_Button.scss';
+import '../styles/components/_Button.scss';
 
 const Button = ({ btnStyle, className, children, ...rest}) => {
   let classes = ['button', btnStyle || 'default', className || ''].join(' ');

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../styles/components/ui/_Card.scss';
+import '../styles/components/_Card.scss';
 
 const Card = ({ hoverable, className, children, ...rest}) => {
   let classes = [

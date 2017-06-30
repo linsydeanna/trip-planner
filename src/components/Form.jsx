@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../../styles/components/ui/_Form.scss';
+import '../styles/components/_Form.scss';
 
 const Form = ({className, children, ...rest}) => {
   let classes = ['form', className || ''].join(' ');

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-import Form from './ui/Form';
-import Button from './ui/Button';
-import Input from './ui/Input';
-import FormStatus from './ui/FormStatus';
-import { required, email, shortest, longest, match } from '../Validations';
+import Form from './Form';
+import Button from './Button';
+import Input from './Input';
+import FormStatus from './FormStatus';
+import { required, email, shortest, longest, match } from '../modules/Validations';
 
 import '../styles/components/_SignUpForm.scss';
 

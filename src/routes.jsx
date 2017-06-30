@@ -6,17 +6,12 @@ import {
   Switch
 } from 'react-router-dom';
 
-import PrivateRoute from '../components/PrivateRoute';
-import NoMatch from '../components/NoMatch';
-import Home from '../pages/Home';
-import Login from '../pages/Login';
-import Logout from '../pages/Logout';
-import Trips from '../pages/Trips';
-import Notifications from '../pages/Notifications';
-import store from '../store/store';
-import { logUserIn } from '../actions/actions';
-
-import '../styles/app.scss';
+import PrivateRoute from './components/PrivateRoute';
+import NoMatch from './components/NoMatch';
+import Login from './pages/Login';
+import Logout from './pages/Logout';
+import Trips from './pages/Trips';
+import Notifications from './pages/Notifications';
 
 const Routes = () => (
   <Router>

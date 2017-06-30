@@ -2,11 +2,11 @@ import React from 'react';
 
 import SignInForm from '../components/SignInForm';
 import SignUpForm from '../components/SignUpForm';
-import Logo from '../components/ui/Logo';
-import Tabs from '../components/ui/CustomTabs';
-import Card from '../components/ui/Card';
-import { logUserIn, addNotification } from '../actions/actions';
-import store from '../store/store';
+import Logo from '../components/Logo';
+import Tabs from '../components/CustomTabs';
+import Card from '../components/Card';
+import { logUserIn, addNotification } from '../actions/users';
+import store from '../store';
 
 import '../styles/components/_SignInSignUp.scss';
 

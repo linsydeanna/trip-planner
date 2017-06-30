@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import '../../styles/components/ui/_Tabs.scss';
+import '../styles/components/_Tabs.scss';
 
 const renderTabs = (children) => {
   return React.Children.map(children, child => (

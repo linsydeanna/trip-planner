@@ -1,11 +1,11 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-import Form from './ui/Form';
-import Input from './ui/Input';
-import Button from './ui/Button';
-import FormStatus from './ui/FormStatus';
-import { required } from '../Validations';
+import Form from './Form';
+import Input from './Input';
+import Button from './Button';
+import FormStatus from './FormStatus';
+import { required } from '../modules/Validations';
 
 import '../styles/components/_SignInForm.scss';
 

@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from './ui/Button';
+import Logo from './Logo';
 
 const Navbar = (props) => {
   return (
-    <nav className="navbar">
-      <Link to="/logout">
-        <Button btnStyle="primary">Logout</Button>
-      </Link>
-    </nav>
+    <div className="navbar">
+      <Logo small />
+      <nav className="nav">
+        <Link to="/logout">Logout</Link>
+      </nav>
+    </div>
   );
 };
 

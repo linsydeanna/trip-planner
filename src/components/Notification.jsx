@@ -2,10 +2,10 @@ import React from 'react';
 import { MdClose } from 'react-icons/lib/md';
 
 import Card from './Card';
-import store from '../../store/store';
-import { removeNotification } from '../../actions/actions';
+import store from '../store';
+import { removeNotification } from '../actions/notifications';
 
-import '../../styles/components/ui/_Notification.scss';
+import '../styles/components/_Notification.scss';
 
 const handleClose = key => {
   store.dispatch(removeNotification({key}));
