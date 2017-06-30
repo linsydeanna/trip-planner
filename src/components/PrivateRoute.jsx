@@ -4,7 +4,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import store from '../store/store';
+import store from '../store';
 
 const PrivateRoute = ({ component: Component, ...rest}) => (
   <Route {...rest} render={props => (

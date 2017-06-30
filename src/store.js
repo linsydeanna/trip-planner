@@ -1,20 +1,18 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
-import cards from "../reducers/cards";
-import user from "../reducers/user";
-import notifications from '../reducers/notifications';
-import logger from "redux-logger";
+// import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { combineReducers, createStore } from 'redux';
+import user from './reducers/user';
+import notifications from './reducers/notifications';
+// import logger from "redux-logger";
 import { reducer as formReducer } from 'redux-form';
-import { logUserIn } from '../actions/actions';
+import { logUserIn } from './actions/users';
 
 const rootReducer = combineReducers({
   form: formReducer,
-  cards,
   user,
   notifications,
 });
 
 const defaultState = {
-  cards: [],
   user: {},
   notifications: []
 };

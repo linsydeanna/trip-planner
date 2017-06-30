@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { CSSTransitionGroup } from 'react-transition-group'
 
-import Notification from '../components/ui/Notification';
+import Notification from '../components/Notification';
 
 const Notifications = ({ notifications }) => {
   return (

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
-import Form from './ui/Form';
-import Button from './ui/Button';
-import Input from './ui/Input';
-import FormStatus from './ui/FormStatus';
-import { required, email, shortest, longest, match } from '../Validations';
+import Form from './Form';
+import Button from './Button';
+import Input from './Input';
+import FormStatus from './FormStatus';
+import { required, email, shortest, longest, match } from '../modules/Validations';
 
 import '../styles/components/_SignUpForm.scss';
 
@@ -14,12 +14,14 @@ const usernameRules = [required, shortest(3), longest(10)];
 const passwordRules = [required, shortest(4), longest(10)];
 const confirmPasswordRules = [match('password')];
 
+const handleSubmitSuccess = (result, dispatch, props) => {
+  props.reset();
+};
+
 const SignUpForm = ({ handleSubmit, postStatus }) => {
   return (
     <Form className="sign-up-form" onSubmit={handleSubmit}>
-      {
-        !postStatus.ok && <FormStatus error message={postStatus.message} />
-      }
+      { !postStatus.ok && <FormStatus error message={postStatus.message} /> }
       <Field
         id="email"
         name="email"
@@ -59,5 +61,6 @@ const SignUpForm = ({ handleSubmit, postStatus }) => {
 
 export default reduxForm({
   form: 'signUp',
-  destroyOnUnmount: false
+  destroyOnUnmount: false,
+  onSubmitSuccess: handleSubmitSuccess
 })(SignUpForm);

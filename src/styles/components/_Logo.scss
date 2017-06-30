@@ -1,5 +1,5 @@
 .logo {
-  
+
   .logo-pic {
     width: 36px;
     height: 36px;
@@ -8,6 +8,19 @@
   .logo-text {
     height: 32px;
     margin: 2px 0.75rem;
+  }
+
+  &.small {
+
+    .logo-pic {
+      width: 24px;
+      height: 24px;
+    }
+
+    .logo-text {
+      height: 24px;
+    }
+
   }
 
 }

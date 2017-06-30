@@ -2,11 +2,11 @@ import React from 'react';
 
 import SignInForm from '../components/SignInForm';
 import SignUpForm from '../components/SignUpForm';
-import Logo from '../components/ui/Logo';
-import Tabs from '../components/ui/CustomTabs';
-import Card from '../components/ui/Card';
-import { logUserIn, addNotification } from '../actions/actions';
-import store from '../store/store';
+import Logo from '../components/Logo';
+import Tabs from '../components/CustomTabs';
+import Card from '../components/Card';
+import { logUserIn, addNotification } from '../actions/users';
+import store from '../store';
 
 import '../styles/components/_SignInSignUp.scss';
 
@@ -72,35 +72,34 @@ class SignInSignUp extends React.Component {
       body: JSON.stringify(payload)
     };
 
-    fetch(base + endpoint, config).then(resp => {
-      this.setPostStatus(resp);
-      return resp.status === 200 ?
-        resp.json().catch(err => {
-          this.handleError(err, 'Unable to parse server response');
-        }) :
-        undefined;
-    })
-    .then(parsedData => {
-      if (!parsedData) { return; }
-
-      let { email, token } = parsedData;
-      if (!email || !token) {
-        let synthResp = {
-          ok: false,
-          status: 200,
-          statusText: 'Authentication is successful, but server response is insufficient.'
-        };
-        this.setPostStatus(synthResp);
-        return;
-      }
-
-      this.resetPostStatus();
-      store.dispatch(logUserIn({ username, email, token }));
-      this.props.redirect('/trips');
-    })
-    .catch(err => {
-      this.handleError(err);
-    });
+    fetch(base + endpoint, config)
+      .then(resp => {
+        this.setPostStatus(resp);
+        return resp.status === 200 || resp.status === 201 ?
+          resp.json().catch(err => {
+            this.handleError(err, 'Unable to parse server response');
+          }) :
+          undefined;
+      })
+      .then(parsedData => {
+        console.log(parsedData);
+        if (!parsedData || !parsedData.email || !parsedData.token) {
+          let synthResp = {
+            ok: false,
+            status: 200,
+            statusText: 'Authentication is successful, but server response is insufficient.'
+          };
+          this.setPostStatus(synthResp);
+          return;
+        }
+        let { email, token } = parsedData;
+        this.resetPostStatus();
+        store.dispatch(logUserIn({ username, email, token }));
+        this.props.redirect('/trips');
+      })
+      .catch(err => {
+        this.handleError(err);
+      });
   }
 
   render() {
