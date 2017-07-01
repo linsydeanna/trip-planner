@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MdExpandMore } from 'react-icons/lib/md';
-import Card from './Card';
 
 import Logo from './Logo';
 
