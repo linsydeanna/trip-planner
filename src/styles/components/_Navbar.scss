@@ -2,8 +2,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-  border: none;
+  border-bottom-color: $border-color-default;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 0;
 
   .logo {
     flex: 0 0 auto;
@@ -21,35 +24,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-  }
-
-  .user-menu {
-    flex: 0 0 auto;
-    align-self: stretch;
-    padding-right: 1rem;
-    padding-left: 1rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-left: 1px solid #EFEFEF;
-
-    .icon-expand-more {
-      margin-left: 0.5rem;
-    }
-
-    .user-menu-context {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      left: -1px;
-      padding: 1rem;
-      border-left: 1px solid #EFEFEF;
-      border-bottom: 1px solid #EFEFEF;
-      background-color: white;
-    }
-
   }
 
 }

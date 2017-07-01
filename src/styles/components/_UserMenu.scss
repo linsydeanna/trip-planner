@@ -1,0 +1,44 @@
+.user-menu {
+  flex: 0 0 auto;
+  align-self: stretch;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-left: 1px solid $border-color-default;
+  cursor: pointer;
+  background-color: $pure-white;
+
+  .icon-expand-more {
+    margin-left: 0.5rem;
+    transform: rotateX(0deg);
+    transition: transform $double-anim-duration ease;
+
+    &.opened {
+      transform: rotateX(180deg);
+    }
+
+  }
+
+  .user-menu-context {
+    z-index: -1;
+    position: absolute;
+    top: -100%;
+    right: 0;
+    left: -1px;
+    padding: 1rem;
+    border-left: 1px solid $border-color-default;
+    border-bottom: 1px solid $border-color-default;
+    background-color: white;
+    transition: top $default-anim-duration ease;
+
+    &.opened {
+      top: 100%;
+    }
+
+  }
+
+}
