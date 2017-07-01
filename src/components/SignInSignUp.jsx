@@ -5,7 +5,8 @@ import SignUpForm from '../components/SignUpForm';
 import Logo from '../components/Logo';
 import Tabs from '../components/CustomTabs';
 import Card from '../components/Card';
-import { logUserIn, addNotification } from '../actions/users';
+import { logUserIn } from '../actions/users';
+import { addNotification } from '../actions/notifications';
 import store from '../store';
 
 import '../styles/components/_SignInSignUp.scss';
