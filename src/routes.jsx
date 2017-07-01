@@ -13,19 +13,24 @@ import Logout from './pages/Logout';
 import Trips from './pages/Trips';
 import Notifications from './pages/Notifications';
 
-const Routes = () => (
-  <Router>
-    <div>
-      <Notifications />
-      <Switch>
-        <Redirect exact from="/" to="/trips" />
-        <Route path="/login" component={Login} />
-        <Route path="/logout" component={Logout} />
-        <PrivateRoute path="/trips" component={Trips} />
-        <Route component={NoMatch} />
-      </Switch>
-    </div>
-  </Router>
-);
+import packageJson from '../package.json';
+
+const Routes = () => {
+  console.log(packageJson);
+  return (
+    <Router>
+      <div>
+        <Notifications />
+        <Switch>
+          <Redirect exact from="/" to="/trips" />
+          <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
+          <PrivateRoute path="/trips" component={Trips} />
+          <Route component={NoMatch} />
+        </Switch>
+      </div>
+    </Router>
+  );
+};
 
 export default Routes;
