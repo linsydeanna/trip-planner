@@ -26,8 +26,8 @@ class SignInSignUp extends React.Component {
     this.handleSignUp = this.handleSignUp.bind(this);
   }
 
-  setPostStatus({ ok, status, statusText }, cb) {
-    let message = `${status} - ${statusText}`;
+  setPostStatus({ ok = false, status, statusText, message }, cb) {
+    message = message || `${status} - ${statusText}`;
     this.setState({ postStatus: { ok, message }}, cb);
   }
 
@@ -76,15 +76,19 @@ class SignInSignUp extends React.Component {
     fetch(base + endpoint, config)
       .then(resp => {
         this.setPostStatus(resp);
-        return resp.status === 200 || resp.status === 201 ?
-          resp.json().catch(err => {
-            this.handleError(err, 'Unable to parse server response');
-          }) :
-          undefined;
+        [200, 201].indexOf(resp.status) !== -1
+        ? this.handlePostSuccess(resp, username)
+        : this.handlePostFailure(resp);
       })
-      .then(parsedData => {
-        console.log(parsedData);
-        if (!parsedData || !parsedData.email || !parsedData.token) {
+      .catch(err => {
+        this.handleError(err);
+      });
+  }
+
+  handlePostSuccess(resp, username) {
+    resp.json()
+      .then(data => {
+        if (!data || !data.email || !data.token) {
           let synthResp = {
             ok: false,
             status: 200,
@@ -93,13 +97,27 @@ class SignInSignUp extends React.Component {
           this.setPostStatus(synthResp);
           return;
         }
-        let { email, token } = parsedData;
+
+        let { email, token } = data;
         this.resetPostStatus();
         store.dispatch(logUserIn({ username, email, token }));
         this.props.redirect('/trips');
+
       })
       .catch(err => {
-        this.handleError(err);
+        this.handleError(err, 'Unable to parse server response');
+      });
+  }
+
+  handlePostFailure(resp) {
+    resp.json()
+      .then(data => {
+        data.message
+        ? this.setPostStatus({ message: data.message })
+        : this.setPostStatus(resp);
+      })
+      .catch(err => {
+        this.handleError(err, 'Unable to parse server error response');
       });
   }
 
