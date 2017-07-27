@@ -13,7 +13,7 @@ const handleSubmitSuccess = (result, dispatch, props) => {
   props.reset();
 };
 
-const SignInForm = ({ handleSubmit, postStatus }) => {
+const SignInForm = ({ handleSubmit, postStatus, loading }) => {
   return (
     <Form className="sign-in-form" onSubmit={handleSubmit}>
       { !postStatus.ok && <FormStatus error message={postStatus.message} /> }
@@ -33,7 +33,7 @@ const SignInForm = ({ handleSubmit, postStatus }) => {
         label="Password"
         validate={[required]}
       />
-      <Button btnStyle="primary" type="submit">Sign In</Button>
+      <Button btnStyle="primary" type="submit" loading={loading}>Sign In</Button>
     </Form>
   );
 };

@@ -16,6 +16,7 @@ class SignInSignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       postStatus: {
         ok: true,
         message: ''
@@ -24,6 +25,10 @@ class SignInSignUp extends React.Component {
     this.handleTabSelect = this.handleTabSelect.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
     this.handleSignUp = this.handleSignUp.bind(this);
+  }
+
+  setLoading(isLoading) {
+    this.setState({ loading: isLoading });
   }
 
   setPostStatus({ ok = false, status, statusText, message }, cb) {
@@ -73,14 +78,18 @@ class SignInSignUp extends React.Component {
       body: JSON.stringify(payload)
     };
 
+    this.setLoading(true);
+
     fetch(base + endpoint, config)
       .then(resp => {
+        this.setLoading(false);
         this.setPostStatus(resp);
         [200, 201].indexOf(resp.status) !== -1
         ? this.handlePostSuccess(resp, username)
         : this.handlePostFailure(resp);
       })
       .catch(err => {
+        this.setLoading(false);
         this.handleError(err);
       });
   }
@@ -130,12 +139,15 @@ class SignInSignUp extends React.Component {
             <SignInForm
               onSubmit={this.handleSignIn}
               postStatus={this.state.postStatus}
+              loading={this.state.loading}
             />
           </div>
           <div title="Sign Up">
             <SignUpForm
               onSubmit={this.handleSignUp}
-              postStatus={this.state.postStatus} />
+              postStatus={this.state.postStatus}
+              loading={this.state.loading}
+            />
           </div>
         </Tabs>
       </Card>

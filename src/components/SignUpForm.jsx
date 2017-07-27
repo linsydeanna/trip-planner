@@ -18,7 +18,7 @@ const handleSubmitSuccess = (result, dispatch, props) => {
   props.reset();
 };
 
-const SignUpForm = ({ handleSubmit, postStatus }) => {
+const SignUpForm = ({ handleSubmit, postStatus, loading }) => {
   return (
     <Form className="sign-up-form" onSubmit={handleSubmit}>
       { !postStatus.ok && <FormStatus error message={postStatus.message} /> }
@@ -54,7 +54,7 @@ const SignUpForm = ({ handleSubmit, postStatus }) => {
         label="Confirm Password"
         validate={confirmPasswordRules}
       />
-      <Button btnStyle="primary" type="submit">Sign Up</Button>
+      <Button btnStyle="primary" type="submit" loading={loading}>Sign Up</Button>
     </Form>
   )
 };
